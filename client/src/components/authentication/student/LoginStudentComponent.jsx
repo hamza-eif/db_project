@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import './LoginComp.css';
 
 const loginValidationSchema = Yup.object({
     email: Yup.string().email('Invalid email address').required('Email is required'),
@@ -18,31 +19,48 @@ const LoginStudentComponent = () => {
     };
 
     return (
-        <section id="authentication-section" className="container-fluid mt-4 pt-4" style={{ height: '100vh' }}>
+        <section id="authentication-section" className="container-fluid">
             <div className="row justify-content-center">
-                <div className="col-lg-6 col-md-8 col-sm-12">
+                <div className="col-lg-12 col-md-12 col-sm-12">
                     <div className="card">
-                        <div className="card-header">
-                            <h3 className="text-center">Student Login</h3>
-                        </div>
                         <div className="card-body">
                             <Formik
                                 initialValues={initialLoginValues}
                                 validationSchema={loginValidationSchema}
                                 onSubmit={handleLoginSubmit}
                             >
-                                <Form>
-                                    <div className="form-group">
-                                        <label htmlFor="student-login-email">Email</label>
-                                        <Field type="email" className="form-control" id="student-login-email" name="email" />
+                                <Form className="form">
+                                    <div className="input-span">
+                                        <label htmlFor="student-login-email" className="label">Email</label>
+                                        <Field 
+                                            type="email" 
+                                            className="form-control" 
+                                            id="student-login-email" 
+                                            name="email" 
+                                        />
                                         <ErrorMessage name="email" component="div" className="text-danger" />
                                     </div>
-                                    <div className="form-group">
-                                        <label htmlFor="student-login-password">Password</label>
-                                        <Field type="password" className="form-control" id="student-login-password" name="password" />
+
+                                    <div className="input-span">
+                                        <label htmlFor="student-login-password" className="label">Password</label>
+                                        <Field 
+                                            type="password" 
+                                            className="form-control" 
+                                            id="student-login-password" 
+                                            name="password" 
+                                        />
                                         <ErrorMessage name="password" component="div" className="text-danger" />
                                     </div>
-                                    <button type="submit" className="btn btn-primary w-100">Login</button>
+
+                                    <div className="span">
+                                        <a href="#">Forgot password?</a>
+                                    </div>
+
+                                    <input className="submit" type="submit" value="Log in" />
+
+                                    <div className="span mt-2">
+                                        Don't have an account? <a href="#">Sign up</a>
+                                    </div>
                                 </Form>
                             </Formik>
                         </div>
