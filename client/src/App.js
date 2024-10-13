@@ -6,6 +6,9 @@ import LoginStudentComp from './components/authentication/student/LoginStudentCo
 
 // add react-bootstrap css file:
 import 'bootstrap/dist/css/bootstrap.min.css';
+import RegisterStudentComponent from "./components/authentication/student/RegisterStudentComponent";
+
+import MultiStepForm from "./components/authentication/student/StepperForm";
 
 
 const loc = window.location.hostname;
@@ -37,7 +40,7 @@ if (subdomain === 'teacher') {
       children: [
         {
           path: "/",
-          element:<LoginStudentComp/>,
+          element:<MultiStepForm/>
         },
         // Add other routes here
       ],
